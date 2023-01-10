@@ -106,23 +106,43 @@ public class Heap
         HeapifyDown(0);
         return value;
     }
+
+    public void PrintAsTree()
+    {
+        for (int i = 0; i < this.count; i++)
+        {
+            Console.Write(this.data[i]);
+            if (LeftChild(i) != -1)
+                Console.Write(" => left: " + this.data[LeftChild(i)]);
+            if (RightChild(i) != -1)
+                Console.Write(" => right: " + this.data[RightChild(i)]);
+            Console.WriteLine();
+        }
+    }
 }
 
-class Main
+class Hello
 {
     static void Main(string[] args)
     {
         Heap heap = new Heap(10);
         heap.Insert(5);
+        heap.PrintAsTree();
+        Console.WriteLine();
         heap.Insert(3);
+        heap.PrintAsTree();
+        Console.WriteLine();
         heap.Insert(8);
+        heap.PrintAsTree();
+        Console.WriteLine();
         heap.Insert(1);
+        heap.PrintAsTree();
+        Console.WriteLine();
         heap.Insert(2);
-        // Wypisanie elementów kopca (od najmniejszego do największego) ​
-        while (!heap.IsEmpty())
-        {
-            int value = heap.Extract();
-            Console.WriteLine(value);
-        }
+        heap.PrintAsTree();
+        Console.WriteLine();
+        heap.Insert(20);
+        // Wypisanie elementów kopca (od najmniejszego do największego) 
+        heap.PrintAsTree();
     }
 }
