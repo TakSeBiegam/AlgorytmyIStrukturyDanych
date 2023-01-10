@@ -106,6 +106,25 @@ public class Heap
         HeapifyDown(0);
         return value;
     }
+    public void Remove(int value)
+    {
+        if (IsEmpty())
+            return;
+        int index = -1;
+        for (int i = 0; i < this.count; i++)
+        {
+            if (this.data[i] == value)
+            {
+                index = i;
+                break;
+            }
+        }
+        if (index == -1)
+            return;
+        Swap(index, this.count - 1);
+        this.count--;
+        HeapifyDown(index);
+    }
 
     public void PrintAsTree()
     {
@@ -127,20 +146,11 @@ class Hello
     {
         Heap heap = new Heap(10);
         heap.Insert(5);
-        heap.PrintAsTree();
-        Console.WriteLine();
         heap.Insert(3);
-        heap.PrintAsTree();
-        Console.WriteLine();
         heap.Insert(8);
-        heap.PrintAsTree();
-        Console.WriteLine();
         heap.Insert(1);
-        heap.PrintAsTree();
-        Console.WriteLine();
         heap.Insert(2);
-        heap.PrintAsTree();
-        Console.WriteLine();
+        heap.Remove(8);
         heap.Insert(20);
         // Wypisanie elementów kopca (od najmniejszego do największego) 
         heap.PrintAsTree();
